@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Raleway, Lato } from "next/font/google";
+import { Raleway, Lato, Playfair_Display } from "next/font/google";
 
 import "./globals.css";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -17,6 +17,13 @@ const lato = Lato({
   weight: ["400", "700"],
 });
 
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: "Game Drive | Safari Website",
   description:
@@ -31,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.variable} ${lato.variable} antialiased`}
+        className={`${raleway.variable} ${lato.variable} ${playfair.variable} antialiased`}
       >
         <div className="flex min-h-screen flex-col bg-background text-foreground">
           <SiteHeader />
