@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const features = [
   {
@@ -40,31 +43,47 @@ const features = [
 ];
 
 export function HeroSection() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background image */}
-      <Image
-        src="/hero-bg.jpg"
-        alt="African wildlife safari"
-        fill
-        priority
-        className="object-cover"
-      />
+      {/* Background image with parallax */}
+      <div
+        className="absolute inset-0"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+      >
+        <Image
+          src="/hero-bg.jpg"
+          alt="African wildlife safari"
+          fill
+          priority
+          className="object-cover scale-110"
+        />
+      </div>
       {/* Subtle overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent" />
 
       {/* Content */}
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-32 pt-20 sm:px-8 lg:px-12">
         <div className="max-w-2xl space-y-6">
           <h1 className="font-display space-y-0 leading-none">
-            <span className="block text-6xl italic text-white sm:text-7xl lg:text-8xl">
+            <span className="hero-title block text-6xl italic text-white sm:text-7xl lg:text-8xl">
               Wildlife
             </span>
-            <span className="block text-5xl italic text-olive-soft sm:text-6xl lg:text-7xl">
+            <span className="hero-title-delay block text-5xl italic text-olive-soft sm:text-6xl lg:text-7xl">
               Nature Tours
             </span>
           </h1>
-          <p className="max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl">
+          <p className="hero-description max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl">
             Premium self-drive car rentals and tailored
             safari experiences. Reliable 4x4s, camping gear,
             and local expertise for the ultimate road trip.
@@ -73,12 +92,16 @@ export function HeroSection() {
       </div>
 
       {/* Feature bar at bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
+      <div className="hero-features absolute bottom-0 left-0 right-0">
         <div className="bg-gradient-to-t from-sand/95 via-sand/80 to-sand/60 backdrop-blur-sm">
           <div className="mx-auto max-w-7xl px-6 py-5 sm:px-8 lg:px-12">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {features.map((feature) => (
-                <div key={feature.title} className="flex items-center gap-3">
+              {features.map((feature, index) => (
+                <div
+                  key={feature.title}
+                  className="flex items-center gap-3 transition-transform duration-300 hover:translate-x-1"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
                   <div className="text-olive">{feature.icon}</div>
                   <div>
                     <div className="text-sm font-semibold text-espresso">

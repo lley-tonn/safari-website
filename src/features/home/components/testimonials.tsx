@@ -1,3 +1,7 @@
+"use client";
+
+import { AnimatedSection } from "@/components/ui/animated-section";
+
 type Testimonial = {
   name: string;
   location: string;
@@ -35,7 +39,7 @@ function StarRating({ rating }: { rating: number }) {
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={`h-5 w-5 ${star <= rating ? "text-amber-400" : "text-gray-300"}`}
+          className={`h-5 w-5 transition-colors duration-300 ${star <= rating ? "text-amber-400" : "text-gray-300"}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -48,9 +52,9 @@ function StarRating({ rating }: { rating: number }) {
 
 function UserIcon() {
   return (
-    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-espresso/20">
+    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-espresso/20 transition-colors duration-300 group-hover:border-olive group-hover:bg-olive/10">
       <svg
-        className="h-5 w-5 text-espresso/40"
+        className="h-5 w-5 text-espresso/40 transition-colors duration-300 group-hover:text-olive"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -68,46 +72,45 @@ function UserIcon() {
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="bg-sand py-16 sm:py-20 lg:py-24">
+    <section id="testimonials" className="bg-sand py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Outer container with border */}
-        <div className="rounded-3xl border border-espresso/10 bg-sand-soft/30 px-6 py-10 sm:px-10 sm:py-12">
+        <AnimatedSection className="rounded-3xl border border-espresso/10 bg-sand-soft/30 px-6 py-12 sm:px-10 sm:py-14">
           {/* Header */}
-          <h2 className="mb-10 text-center font-heading text-3xl font-bold tracking-tight text-espresso sm:text-4xl">
+          <h2 className="mb-12 text-center font-heading text-3xl font-bold tracking-tight text-espresso sm:text-4xl">
             What Our Explorers Say
           </h2>
 
           {/* Testimonial cards */}
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3">
             {testimonials.map((t, index) => (
-              <article
-                key={index}
-                className="flex flex-col rounded-2xl bg-card p-6"
-              >
-                {/* Star rating */}
-                <div className="mb-4">
-                  <StarRating rating={t.rating} />
-                </div>
-
-                {/* Quote */}
-                <p className="mb-6 flex-1 text-sm italic leading-relaxed text-espresso/70">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <UserIcon />
-                  <div>
-                    <p className="text-sm font-semibold text-espresso">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-espresso/60">{t.location}</p>
+              <AnimatedSection key={index} delay={index * 150}>
+                <article className="group flex flex-col rounded-2xl bg-card p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                  {/* Star rating */}
+                  <div className="mb-4">
+                    <StarRating rating={t.rating} />
                   </div>
-                </div>
-              </article>
+
+                  {/* Quote */}
+                  <p className="mb-6 flex-1 text-sm italic leading-relaxed text-espresso/70">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-3">
+                    <UserIcon />
+                    <div>
+                      <p className="text-sm font-semibold text-espresso transition-colors duration-300 group-hover:text-olive">
+                        {t.name}
+                      </p>
+                      <p className="text-xs text-espresso/60">{t.location}</p>
+                    </div>
+                  </div>
+                </article>
+              </AnimatedSection>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 type FaqItem = {
   question: string;
@@ -29,52 +30,66 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-sand py-16 sm:py-20 lg:py-24">
+    <section id="faq" className="bg-sand py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <h2 className="mb-10 text-center font-heading text-3xl font-bold tracking-tight text-espresso sm:text-4xl">
-          Frequently Asked Questions
-        </h2>
+        <AnimatedSection className="mb-12">
+          <h2 className="text-center font-heading text-3xl font-bold tracking-tight text-espresso sm:text-4xl">
+            Frequently Asked Questions
+          </h2>
+        </AnimatedSection>
 
         {/* FAQ items */}
         <div className="mx-auto max-w-2xl space-y-4">
           {faqs.map((item, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={item.question} className="overflow-hidden">
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between gap-4 rounded-xl bg-sand-soft/50 px-6 py-5 text-left transition-colors hover:bg-sand-soft/70"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  aria-expanded={isOpen}
-                >
-                  <span className="text-base font-medium text-espresso">
-                    {item.question}
-                  </span>
-                  <span className="shrink-0 text-espresso/50">
-                    <svg
-                      className={`h-5 w-5 transition-transform ${isOpen ? "rotate-90" : ""}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m9 5 7 7-7 7"
-                      />
-                    </svg>
-                  </span>
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-5 pt-2">
-                    <p className="text-sm leading-relaxed text-espresso/70">
-                      {item.answer}
-                    </p>
+              <AnimatedSection key={item.question} delay={index * 100}>
+                <div className="overflow-hidden rounded-xl transition-shadow duration-300 hover:shadow-lg">
+                  <button
+                    type="button"
+                    className={`flex w-full items-center justify-between gap-4 px-6 py-5 text-left transition-all duration-300 ${
+                      isOpen
+                        ? "bg-sand-soft/70"
+                        : "bg-sand-soft/50 hover:bg-sand-soft/60"
+                    }`}
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base font-medium text-espresso">
+                      {item.question}
+                    </span>
+                    <span className="shrink-0 text-espresso/50">
+                      <svg
+                        className={`h-5 w-5 transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="m9 5 7 7-7 7"
+                        />
+                      </svg>
+                    </span>
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ease-in-out ${
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden bg-sand-soft/30">
+                      <div className="px-6 py-5">
+                        <p className="text-sm leading-relaxed text-espresso/70">
+                          {item.answer}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
+                </div>
+              </AnimatedSection>
             );
           })}
         </div>
