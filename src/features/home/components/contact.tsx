@@ -1,112 +1,162 @@
-import { Button } from "@/components/ui/button";
-
 export function ContactSection() {
   return (
-    <section id="contact" className="bg-olive py-16 sm:py-20 lg:py-24">
+    <section id="contact" className="bg-sand py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Form side */}
-          <div className="rounded-[20px] bg-sand p-6 sm:p-8">
-            <h2 className="text-xl font-semibold text-foreground mb-2">
-              Get in Touch
-            </h2>
-            <p className="text-sm text-foreground/70 mb-6">
-              Ready to book or have questions? Send us a message.
-            </p>
+        <div className="overflow-hidden rounded-3xl border border-espresso/10 shadow-lg">
+          <div className="grid lg:grid-cols-2">
+            {/* Form side */}
+            <div className="bg-card p-8 sm:p-10">
+              <h2 className="font-heading text-3xl font-bold text-espresso">
+                Get in Touch
+              </h2>
+              <p className="mt-2 text-base text-espresso/60">
+                Ready to book or have questions? Send us a message.
+              </p>
 
-            <form className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-foreground/70">
-                    Name
+              <form className="mt-8 space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-espresso">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      className="h-12 w-full rounded-xl border border-espresso/10 bg-sand/50 px-4 text-sm text-espresso outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-espresso">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="h-12 w-full rounded-xl border border-espresso/10 bg-sand/50 px-4 text-sm text-espresso outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-espresso">
+                    Inquiry Type
                   </label>
-                  <input
-                    type="text"
-                    className="h-11 w-full rounded-lg border border-black/10 bg-white px-3 text-sm text-foreground outline-none focus:border-olive focus:ring-2 focus:ring-olive/20"
+                  <div className="relative">
+                    <select className="h-12 w-full appearance-none rounded-xl border border-espresso/10 bg-sand/50 px-4 pr-10 text-sm text-espresso outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20">
+                      <option>Self-Drive Rental quote</option>
+                      <option>Guided Safari</option>
+                      <option>Equipment Rental</option>
+                      <option>Other</option>
+                    </select>
+                    <svg
+                      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-espresso/50"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m19 9-7 7-7-7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-espresso">
+                    Message
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="w-full resize-none rounded-xl border border-espresso/10 bg-sand/50 px-4 py-3 text-sm text-espresso outline-none transition focus:border-olive focus:ring-2 focus:ring-olive/20"
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-foreground/70">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="h-11 w-full rounded-lg border border-black/10 bg-white px-3 text-sm text-foreground outline-none focus:border-olive focus:ring-2 focus:ring-olive/20"
-                  />
-                </div>
-              </div>
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-foreground/70">
-                  Inquiry Type
-                </label>
-                <select className="h-11 w-full rounded-lg border border-black/10 bg-white px-3 text-sm text-foreground outline-none focus:border-olive focus:ring-2 focus:ring-olive/20">
-                  <option>Self Drive Rental quote</option>
-                  <option>Guided Safari</option>
-                  <option>Equipment Rental</option>
-                  <option>Other</option>
-                </select>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-foreground/70">
-                  Inquiry Type
-                </label>
-                <textarea
-                  rows={4}
-                  className="w-full rounded-lg border border-black/10 bg-white px-3 py-2 text-sm text-foreground outline-none focus:border-olive focus:ring-2 focus:ring-olive/20"
-                />
-              </div>
-
-              <Button size="md" className="w-full sm:w-auto">
-                Send Message
-              </Button>
-            </form>
-          </div>
-
-          {/* Contact info side */}
-          <div className="rounded-[20px] bg-amber-100 p-6 sm:p-8">
-            <h2 className="text-xl font-semibold text-foreground mb-6">
-              Contact Information
-            </h2>
-
-            <div className="space-y-5">
-              <div className="flex items-start gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-olive text-white text-sm">
-                  📍
-                </span>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Office Location</p>
-                  <p className="text-sm text-foreground/70">
-                    Plot 123 Safari Road, Kampala, Uganda
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-olive text-white text-sm">
-                  📱
-                </span>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Phone / WhatsApp</p>
-                  <p className="text-sm text-foreground/70">+256 123 456 7889</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-olive text-white text-sm">
-                  ✉️
-                </span>
-                <div>
-                  <p className="text-sm font-medium text-foreground">Email Address</p>
-                  <p className="text-sm text-foreground/70">info@gamedriveafrica.com</p>
-                </div>
-              </div>
+                <button
+                  type="submit"
+                  className="rounded-full bg-chocolate px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-espresso"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
 
-            {/* Map placeholder */}
-            <div className="mt-6 aspect-video rounded-lg bg-sand-soft flex items-center justify-center text-foreground/40 text-sm">
-              Interactive Map area
+            {/* Contact info side */}
+            <div className="bg-olive p-8 sm:p-10">
+              <h2 className="font-heading text-2xl font-bold text-white sm:text-3xl">
+                Contact Information
+              </h2>
+
+              <div className="mt-8 space-y-6">
+                {/* Office Location */}
+                <div className="flex items-start gap-4">
+                  <div className="shrink-0 text-chocolate">
+                    <svg
+                      className="h-7 w-7"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 3.69 2.923l.136.09.049.03Zm.46-13.852a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Office Location</p>
+                    <p className="mt-0.5 text-white/80">
+                      Plot 123, Safari Road, Kampala, Uganda
+                    </p>
+                  </div>
+                </div>
+
+                {/* Phone / WhatsApp */}
+                <div className="flex items-start gap-4">
+                  <div className="shrink-0 text-chocolate">
+                    <svg
+                      className="h-7 w-7"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Phone / WhatsApp</p>
+                    <p className="mt-0.5 text-white/80">+256 123 456 7889</p>
+                  </div>
+                </div>
+
+                {/* Email Address */}
+                <div className="flex items-start gap-4">
+                  <div className="shrink-0 text-chocolate">
+                    <svg
+                      className="h-7 w-7"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                      <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Email Address</p>
+                    <p className="mt-0.5 text-white/80">
+                      info@gamedriveeastafrica.com
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map placeholder */}
+              <div className="mt-8 flex aspect-[2/1] items-center justify-center rounded-2xl border border-white/20 bg-olive-soft/50 text-white/60">
+                Interactive Map area
+              </div>
             </div>
           </div>
         </div>
@@ -114,4 +164,3 @@ export function ContactSection() {
     </section>
   );
 }
-
