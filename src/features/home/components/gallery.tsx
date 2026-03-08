@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 const galleryImages = [
   {
@@ -70,61 +73,67 @@ const socialLinks = [
 
 export function GallerySection() {
   return (
-    <section id="gallery" className="bg-sand py-16 sm:py-20 lg:py-24">
+    <section id="gallery" className="bg-sand py-20 sm:py-28 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-10 space-y-2 text-center">
+        <AnimatedSection className="mb-12 space-y-2 text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-olive">
             Moments
           </p>
           <h2 className="font-heading text-3xl font-bold tracking-tight text-espresso sm:text-4xl">
             Life on the Road
           </h2>
-        </div>
+        </AnimatedSection>
 
         {/* Bento gallery grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {/* Large image on left */}
-          <div className="relative aspect-[3/4] overflow-hidden rounded-2xl md:row-span-2">
-            <Image
-              src={galleryImages[0].src}
-              alt={galleryImages[0].alt}
-              fill
-              className="object-cover"
-            />
-          </div>
+        <AnimatedSection delay={200}>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {/* Large image on left */}
+            <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl md:row-span-2 cursor-pointer">
+              <Image
+                src={galleryImages[0].src}
+                alt={galleryImages[0].alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+            </div>
 
-          {/* Top right - two smaller images */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-            <Image
-              src={galleryImages[1].src}
-              alt={galleryImages[1].alt}
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-            <Image
-              src={galleryImages[2].src}
-              alt={galleryImages[2].alt}
-              fill
-              className="object-cover"
-            />
-          </div>
+            {/* Top right - two smaller images */}
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer">
+              <Image
+                src={galleryImages[1].src}
+                alt={galleryImages[1].alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+            </div>
+            <div className="group relative aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer">
+              <Image
+                src={galleryImages[2].src}
+                alt={galleryImages[2].alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+            </div>
 
-          {/* Bottom right - wide image */}
-          <div className="relative aspect-[2/1] overflow-hidden rounded-2xl md:col-span-2">
-            <Image
-              src={galleryImages[3].src}
-              alt={galleryImages[3].alt}
-              fill
-              className="object-cover"
-            />
+            {/* Bottom right - wide image */}
+            <div className="group relative aspect-[2/1] overflow-hidden rounded-2xl md:col-span-2 cursor-pointer">
+              <Image
+                src={galleryImages[3].src}
+                alt={galleryImages[3].alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* Share section */}
-        <div className="mt-10 rounded-2xl border border-espresso/10 bg-card/50 px-6 py-8 text-center">
+        <AnimatedSection delay={400} className="mt-12 rounded-2xl border border-espresso/10 bg-card/50 px-6 py-8 text-center">
           <h3 className="font-heading text-xl font-bold text-espresso">
             Share Your Journey
           </h3>
@@ -136,14 +145,14 @@ export function GallerySection() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="text-olive transition-colors hover:text-olive-soft"
+                className="text-olive transition-all duration-200 hover:text-olive-soft hover:scale-110"
                 aria-label={link.label}
               >
                 {link.icon}
               </Link>
             ))}
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
