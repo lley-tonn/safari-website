@@ -8,7 +8,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "900"],
 });
 
 const lato = Lato({
