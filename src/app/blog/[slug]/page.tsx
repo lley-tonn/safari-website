@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts, getBlogPost } from "@/lib/data/blog-posts";
 import { BlogPostContent } from "@/features/blog/components/blog-post";
-import { ContactSection } from "@/features/home/components/contact";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -47,10 +46,5 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  return (
-    <>
-      <BlogPostContent post={post} />
-      <ContactSection />
-    </>
-  );
+  return <BlogPostContent post={post} />;
 }

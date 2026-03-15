@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { GalleryPageContent } from "@/features/gallery/components/gallery-page";
-import { ContactSection } from "@/features/home/components/contact";
 
 export const metadata: Metadata = {
   title: "Gallery | Game Drive East Africa",
@@ -9,10 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function GalleryPage() {
-  return (
-    <>
-      <GalleryPageContent />
-      <ContactSection />
-    </>
-  );
+  return <GalleryPageContent />;
 }
