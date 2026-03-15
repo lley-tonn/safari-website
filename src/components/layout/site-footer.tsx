@@ -132,8 +132,8 @@ export function SiteFooter() {
             <form className="space-y-3">
               <input
                 type="email"
-                placeholder=""
-                className="h-12 w-full rounded-xl border border-sand/10 bg-chocolate/50 px-4 text-sm text-sand outline-none transition focus:border-olive"
+                placeholder="Enter your email"
+                className="h-12 w-full rounded-xl border border-sand/10 bg-chocolate/50 px-4 text-sm text-sand placeholder:text-sand/40 outline-none transition focus:border-olive"
               />
               <button
                 type="submit"
