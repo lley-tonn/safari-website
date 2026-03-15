@@ -5,9 +5,10 @@ export const siteConfig = {
   nav: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Fleet", href: "/#vehicles" },
-    { label: "Safaris", href: "/#packages" },
-    { label: "Gallery", href: "/#gallery" },
+    { label: "Fleet", href: "/vehicles" },
+    { label: "Safaris", href: "/packages" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Blog", href: "/blog" },
   ],
 } as const;
 
