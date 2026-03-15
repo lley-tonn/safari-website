@@ -50,8 +50,9 @@ const socialLinks = [
 
 const quickLinks = [
   { label: "About Us", href: "/about" },
-  { label: "Our Fleet", href: "/#fleet" },
-  { label: "Guided Safaris", href: "/#packages" },
+  { label: "Our Fleet", href: "/vehicles" },
+  { label: "Guided Safaris", href: "/packages" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Travel Blog", href: "/blog" },
   { label: "Terms & Conditions", href: "/terms" },
 ];
